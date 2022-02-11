@@ -37,7 +37,8 @@ public class Boss
 
         //残りmpを減らす
         this.mp -= 5;
-        
+
+        Debug.Log("残りMPは" + mp);
     }
 
 }
