@@ -12,13 +12,13 @@ public class Boss
     //攻撃用の関数
     public void Attak()
     {
-        Debug.Log(this.power + "のダメージを与えた");
+        Debug.Log(this.power + "のダメージを与えた。");
     }
 
     //防御用の関数
     public void Defence(int damage)
     {
-        Debug.Log(damage + "のダメージを受けた");
+        Debug.Log(damage + "のダメージを受けた。");
         //残りhpを減らす
         this.hp -= damage;
     }
@@ -26,19 +26,21 @@ public class Boss
     //魔法用の関数
     public void Magic()
     {
-        if (this.mp > 5)
+        if (this.mp >= 5)
         {
-            Debug.Log("魔法攻撃をした");
+            Debug.Log("魔法攻撃をした。");
+
+            //残りmpを5減らす
+            this.mp -= 5;
+
+            Debug.Log("残りMPは" + mp);
+
         }
         else
         {
-            Debug.Log("mpが足りない");
+            Debug.Log("mpが足りないため、魔法が使えない。");
         }
-
-        //残りmpを減らす
-        this.mp -= 5;
-
-        Debug.Log("残りMPは" + mp);
+     
     }
 
 }
@@ -77,10 +79,12 @@ public class Test : MonoBehaviour
         //防御用の関数を呼び出す
         boss.Defence(3);
         //魔法用の関数を呼び出す
-        for (int i = 0; i < 11; i++)
+        for (int i = 0; i < 10; i++)
         {
             boss.Magic();
         }
+        //Magic関数を10回使った後に、さらにMadic関数を呼び出す
+        boss.Magic();
         
 
     }
